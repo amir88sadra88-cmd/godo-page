@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>تصمیم</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 150px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: green;
+            color: white;
+        }
+
+        #no {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>دوستت دارم و بالاخره تصمیم گرفتم گردنت بگیرم 😂</h1>
+
+    <button id="yes">آره</button>
+    <button id="no">نه</button>
+
+    <script>
+        let yes = document.getElementById("yes");
+        let no = document.getElementById("no");
+
+        let size = 20;
+
+        no.onclick = function() {
+            size = size + 10;
+            yes.style.fontSize = size + "px";
+            yes.style.padding = (size / 2) + "px " + size + "px";
+        };
+
+        yes.onclick = function() {
+            alert("بالاخره آره رو زدی 😂❤️");
+        };
+    </script>
+
+</body>
+</html>
