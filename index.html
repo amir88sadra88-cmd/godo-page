@@ -1,63 +1,1020 @@
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <title>تصمیم</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>خانوم مانیا</title>
 
     <style>
-        body {
-            text-align: center;
-            font-family: Arial;
-            margin-top: 150px;
+
+        * {
+            box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 30px;
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Tahoma, Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,255,255,0.8) 0 8px, transparent 9px),
+                radial-gradient(circle at 80% 25%, rgba(255,255,255,0.7) 0 10px, transparent 11px),
+                radial-gradient(circle at 30% 80%, rgba(255,255,255,0.7) 0 7px, transparent 8px),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.8) 0 9px, transparent 10px),
+                linear-gradient(
+                    135deg,
+                    #ffd1dc,
+                    #ffe1e9,
+                    #f9d4df,
+                    #f4d9e8,
+                    #ffd9d9
+                );
+
+            overflow: hidden;
         }
+
+
+        /* گل های پس زمینه */
+
+        body::before {
+            content: "✿   ❀   ✿      ❀   ✿      ❀   ✿";
+            position: fixed;
+
+            top: 5%;
+            left: 2%;
+
+            font-size: 45px;
+            color: rgba(255,255,255,0.65);
+
+            letter-spacing: 25px;
+
+            transform: rotate(-10deg);
+
+            pointer-events: none;
+
+            animation: flowers 5s ease-in-out infinite alternate;
+        }
+
+
+        body::after {
+            content: "❀   ✿      ❀   ✿   ❀      ✿   ❀";
+            position: fixed;
+
+            bottom: 5%;
+            right: 0%;
+
+            font-size: 42px;
+            color: rgba(255,255,255,0.65);
+
+            letter-spacing: 20px;
+
+            transform: rotate(8deg);
+
+            pointer-events: none;
+
+            animation: flowers 6s ease-in-out infinite alternate-reverse;
+        }
+
+
+        @keyframes flowers {
+
+            from {
+                opacity: 0.4;
+                transform: translateY(0) rotate(-8deg);
+            }
+
+            to {
+                opacity: 0.9;
+                transform: translateY(-15px) rotate(5deg);
+            }
+
+        }
+
+
+        /* صفحه اصلی */
+
+        .container {
+
+            width: 90%;
+            max-width: 850px;
+
+            text-align: center;
+
+            padding: 55px 30px;
+
+            border-radius: 40px;
+
+            background: rgba(255,255,255,0.35);
+
+            border: 3px solid rgba(255,255,255,0.65);
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 20px 60px rgba(180, 50, 90, 0.25),
+                inset 0 0 30px rgba(255,255,255,0.35);
+
+            animation: boxAppear 1.2s ease;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        @keyframes boxAppear {
+
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
+        }
+
+
+        /* سوال */
+
+        #question {
+
+            font-size: 42px;
+
+            color: #8f294b;
+
+            text-shadow:
+                0 3px 8px rgba(120, 20, 50, 0.25),
+                0 0 20px rgba(255,255,255,0.8);
+
+            line-height: 1.7;
+
+            margin-bottom: 45px;
+
+            animation: textGlow 2.5s ease-in-out infinite alternate;
+
+        }
+
+
+        @keyframes textGlow {
+
+            from {
+                transform: translateY(0);
+                text-shadow:
+                    0 3px 8px rgba(120, 20, 50, 0.25);
+            }
+
+            to {
+                transform: translateY(-4px);
+                text-shadow:
+                    0 5px 20px rgba(255,255,255,0.9),
+                    0 0 25px rgba(255,150,180,0.7);
+            }
+
+        }
+
+
+        /* دکمه ها */
+
+        .buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 35px;
+
+            flex-wrap: wrap;
+
+        }
+
 
         button {
-            padding: 15px 30px;
-            font-size: 20px;
-            margin: 10px;
+
             border: none;
-            border-radius: 10px;
+
             cursor: pointer;
+
+            font-family: Tahoma, Arial, sans-serif;
+
+            transition:
+                transform 0.3s ease,
+                font-size 0.3s ease,
+                padding 0.3s ease,
+                box-shadow 0.3s ease;
+
         }
 
-        #yes {
-            background-color: green;
+
+        /* دکمه آره */
+
+        #yesBtn {
+
+            font-size: 28px;
+
+            padding: 18px 42px;
+
             color: white;
+
+            background:
+                radial-gradient(circle at 30% 30%, #fff 0 3px, transparent 4px),
+                radial-gradient(circle at 70% 65%, #fff 0 3px, transparent 4px),
+                linear-gradient(
+                    135deg,
+                    #e98ca8,
+                    #d96c91,
+                    #c9577c
+                );
+
+            border: 3px solid rgba(255,255,255,0.85);
+
+            border-radius: 50px;
+
+            box-shadow:
+                0 8px 25px rgba(170, 40, 80, 0.4),
+                inset 0 0 15px rgba(255,255,255,0.3);
+
+            position: relative;
+
+            overflow: hidden;
+
+            animation: yesPulse 2s infinite;
+
         }
 
-        #no {
-            background-color: red;
-            color: white;
+
+        #yesBtn::before {
+
+            content: "✿  ❀  ✿";
+
+            position: absolute;
+
+            top: 2px;
+            left: 0;
+
+            width: 100%;
+
+            font-size: 12px;
+
+            color: rgba(255,255,255,0.8);
+
         }
+
+
+        #yesBtn:hover {
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 12px 35px rgba(170, 40, 80, 0.55),
+                0 0 25px rgba(255,255,255,0.7);
+
+        }
+
+
+        @keyframes yesPulse {
+
+            0%, 100% {
+                box-shadow:
+                    0 8px 25px rgba(170, 40, 80, 0.4);
+            }
+
+            50% {
+                box-shadow:
+                    0 8px 35px rgba(170, 40, 80, 0.65),
+                    0 0 25px rgba(255,255,255,0.6);
+            }
+
+        }
+
+
+        /* دکمه نه */
+
+        #noBtn {
+
+            font-size: 25px;
+
+            padding: 17px 38px;
+
+            color: #9d3b5a;
+
+            background: rgba(255,255,255,0.65);
+
+            border: 3px solid rgba(255,255,255,0.9);
+
+            border-radius: 50px;
+
+            box-shadow:
+                0 7px 20px rgba(150, 60, 90, 0.2);
+
+        }
+
+
+        #noBtn:hover {
+
+            transform: scale(0.95);
+
+        }
+
+
+        /* صفحه تبریک */
+
+        #celebration {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 20;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            padding: 20px;
+
+        }
+
+
+        /* کادر گل گلی آبی */
+
+        .celebrationBox {
+
+            width: 90%;
+
+            max-width: 800px;
+
+            min-height: 400px;
+
+            padding: 65px 35px;
+
+            border-radius: 45px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,255,255,0.7) 0 8px, transparent 9px),
+                radial-gradient(circle at 85% 25%, rgba(255,255,255,0.7) 0 9px, transparent 10px),
+                radial-gradient(circle at 25% 80%, rgba(255,255,255,0.7) 0 7px, transparent 8px),
+                radial-gradient(circle at 80% 75%, rgba(255,255,255,0.7) 0 8px, transparent 9px),
+                linear-gradient(
+                    135deg,
+                    #ccecff,
+                    #dcefff,
+                    #c9e5ff,
+                    #e5f4ff
+                );
+
+            border: 5px solid rgba(255,255,255,0.9);
+
+            box-shadow:
+                0 0 50px rgba(80,160,230,0.5),
+                0 25px 80px rgba(70,120,180,0.3),
+                inset 0 0 40px rgba(255,255,255,0.5);
+
+            animation:
+                celebrationBox 1s ease,
+                boxGlow 2s infinite alternate;
+
+        }
+
+
+        .celebrationBox::before {
+
+            content:
+                "✿  ❀  ✿  ❀  ✿  ❀  ✿";
+
+            position: absolute;
+
+            top: 18px;
+            left: 0;
+
+            width: 100%;
+
+            font-size: 30px;
+
+            color: rgba(60,130,190,0.65);
+
+            letter-spacing: 10px;
+
+        }
+
+
+        .celebrationBox::after {
+
+            content:
+                "❀  ✿  ❀  ✿  ❀  ✿  ❀";
+
+            position: absolute;
+
+            bottom: 18px;
+            left: 0;
+
+            width: 100%;
+
+            font-size: 30px;
+
+            color: rgba(60,130,190,0.65);
+
+            letter-spacing: 10px;
+
+        }
+
+
+        @keyframes celebrationBox {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.5)
+                    rotate(-4deg);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+            }
+
+        }
+
+
+        @keyframes boxGlow {
+
+            from {
+
+                box-shadow:
+                    0 0 35px rgba(80,160,230,0.4),
+                    0 25px 70px rgba(70,120,180,0.25);
+
+            }
+
+            to {
+
+                box-shadow:
+                    0 0 70px rgba(100,190,255,0.75),
+                    0 25px 90px rgba(70,120,180,0.4);
+
+            }
+
+        }
+
+
+        /* متن بلاخرههههه */
+
+        #congrats {
+
+            font-size: 82px;
+
+            font-weight: bold;
+
+            color: #176fa8;
+
+            margin: 0 0 20px 0;
+
+            position: relative;
+
+            z-index: 3;
+
+            text-shadow:
+                0 5px 0 white,
+                0 0 20px rgba(255,255,255,0.9),
+                0 0 35px rgba(50,150,220,0.6);
+
+            animation:
+                congratsAnimation 1s ease,
+                congratsGlow 1.8s infinite alternate;
+
+        }
+
+
+        #accepted {
+
+            font-size: 40px;
+
+            color: #245d87;
+
+            font-weight: bold;
+
+            margin: 0;
+
+            position: relative;
+
+            z-index: 3;
+
+            text-shadow:
+                0 3px 10px rgba(255,255,255,0.9);
+
+            animation:
+                acceptedAnimation 1.5s ease;
+
+        }
+
+
+        @keyframes congratsAnimation {
+
+            0% {
+
+                transform: scale(0.2) rotate(-10deg);
+
+                opacity: 0;
+
+            }
+
+            60% {
+
+                transform: scale(1.2) rotate(4deg);
+
+                opacity: 1;
+
+            }
+
+            100% {
+
+                transform: scale(1) rotate(0);
+
+            }
+
+        }
+
+
+        @keyframes congratsGlow {
+
+            from {
+
+                transform: scale(1);
+
+                filter: brightness(1);
+
+            }
+
+            to {
+
+                transform: scale(1.06);
+
+                filter: brightness(1.2);
+
+            }
+
+        }
+
+
+        @keyframes acceptedAnimation {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(30px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+        /* فشفشه ها */
+
+        .firework {
+
+            position: fixed;
+
+            width: 18px;
+
+            height: 18px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            box-shadow:
+                0 0 15px white,
+                0 0 30px #ff8fb1,
+                0 0 50px #ff5c91;
+
+            pointer-events: none;
+
+            z-index: 50;
+
+        }
+
+
+        .particle {
+
+            position: fixed;
+
+            width: 12px;
+
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            box-shadow:
+                0 0 12px white,
+                0 0 25px currentColor,
+                0 0 45px currentColor;
+
+            pointer-events: none;
+
+            z-index: 50;
+
+            animation: explode 1.3s ease-out forwards;
+
+        }
+
+
+        @keyframes explode {
+
+            0% {
+
+                transform:
+                    translate(0, 0)
+                    scale(1.5);
+
+                opacity: 1;
+
+            }
+
+            100% {
+
+                transform:
+                    translate(var(--x), var(--y))
+                    scale(0.1);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* موبایل */
+
+        @media (max-width: 600px) {
+
+            #question {
+
+                font-size: 27px;
+
+            }
+
+
+            #yesBtn {
+
+                font-size: 23px;
+
+                padding: 15px 32px;
+
+            }
+
+
+            #noBtn {
+
+                font-size: 21px;
+
+                padding: 14px 30px;
+
+            }
+
+
+            #congrats {
+
+                font-size: 55px;
+
+            }
+
+
+            #accepted {
+
+                font-size: 28px;
+
+            }
+
+
+            .celebrationBox {
+
+                min-height: 330px;
+
+                padding: 50px 20px;
+
+            }
+
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <h1>دوستت دارم و بالاخره تصمیم گرفتم گردنت بگیرم 😂</h1>
 
-    <button id="yes">آره</button>
-    <button id="no">نه</button>
+    <!-- صفحه سوال -->
+
+    <div class="container" id="mainPage">
+
+        <div id="question">
+            آیا میخوای منو داشته باشی مانیا خانوم ؟
+        </div>
+
+
+        <div class="buttons">
+
+            <button id="yesBtn" onclick="yesClicked()">
+                آره
+            </button>
+
+
+            <button id="noBtn" onclick="noClicked()">
+                نه
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- صفحه تبریک -->
+
+    <div id="celebration">
+
+        <div class="celebrationBox">
+
+            <h1 id="congrats">
+                بلاخرههههه
+            </h1>
+
+
+            <p id="accepted">
+                جفتمونو خوشبخت کردی با جواب اره خوشگلمممممم
+            </p>
+
+        </div>
+
+    </div>
+
 
     <script>
-        let yes = document.getElementById("yes");
-        let no = document.getElementById("no");
 
-        let size = 20;
+        let yesSize = 28;
 
-        no.onclick = function() {
-            size = size + 10;
-            yes.style.fontSize = size + "px";
-            yes.style.padding = (size / 2) + "px " + size + "px";
-        };
+        let noSize = 25;
 
-        yes.onclick = function() {
-            alert("بالاخره آره رو زدی 😂❤️");
-        };
+
+        function noClicked() {
+
+            /* بزرگ شدن آره */
+
+            yesSize = yesSize + 8;
+
+            document.getElementById("yesBtn").style.fontSize =
+                yesSize + "px";
+
+
+            document.getElementById("yesBtn").style.padding =
+                (18 + yesSize / 4) + "px " +
+                (42 + yesSize / 3) + "px";
+
+
+            /* کوچک شدن نه */
+
+            noSize = noSize - 3;
+
+
+            if (noSize < 9) {
+
+                noSize = 9;
+
+            }
+
+
+            document.getElementById("noBtn").style.fontSize =
+                noSize + "px";
+
+
+            document.getElementById("noBtn").style.padding =
+                Math.max(5, noSize / 1.5) + "px " +
+                Math.max(10, noSize) + "px";
+
+
+            /* یک فشفشه کوچیک هم با نه */
+
+            smallFirework();
+
+        }
+
+
+        function yesClicked() {
+
+            /* صفحه سوال مخفی */
+
+            document.getElementById("mainPage").style.display = "none";
+
+
+            /* صفحه تبریک */
+
+            document.getElementById("celebration").style.display = "flex";
+
+
+            /* فشفشه های بزرگ */
+
+            createBigFireworks();
+
+        }
+
+
+        function smallFirework() {
+
+            let x = Math.random() * window.innerWidth;
+
+            let y = Math.random() * window.innerHeight;
+
+            createFirework(x, y);
+
+        }
+
+
+        function createBigFireworks() {
+
+            let count = 0;
+
+
+            let interval = setInterval(function () {
+
+                let x =
+                    100 +
+                    Math.random() *
+                    (window.innerWidth - 200);
+
+
+                let y =
+                    80 +
+                    Math.random() *
+                    (window.innerHeight - 300);
+
+
+                createFirework(x, y);
+
+
+                count++;
+
+
+                if (count >= 12) {
+
+                    clearInterval(interval);
+
+                }
+
+            }, 220);
+
+        }
+
+
+        function createFirework(x, y) {
+
+            let firework =
+                document.createElement("div");
+
+            firework.className = "firework";
+
+            firework.style.left =
+                x + "px";
+
+            firework.style.top =
+                y + "px";
+
+            document.body.appendChild(firework);
+
+
+            setTimeout(function () {
+
+                firework.remove();
+
+            }, 400);
+
+
+            /* تعداد زیاد ذرات */
+
+            for (let i = 0; i < 35; i++) {
+
+                let particle =
+                    document.createElement("div");
+
+                particle.className = "particle";
+
+
+                particle.style.left =
+                    x + "px";
+
+
+                particle.style.top =
+                    y + "px";
+
+
+                let angle =
+                    (Math.PI * 2 * i) / 35;
+
+
+                let distance =
+                    120 + Math.random() * 180;
+
+
+                let moveX =
+                    Math.cos(angle) * distance;
+
+
+                let moveY =
+                    Math.sin(angle) * distance;
+
+
+                particle.style.setProperty(
+                    "--x",
+                    moveX + "px"
+                );
+
+
+                particle.style.setProperty(
+                    "--y",
+                    moveY + "px"
+                );
+
+
+                let colors = [
+                    "#ff4f81",
+                    "#ff85a1",
+                    "#fff",
+                    "#72c9ff",
+                    "#ffd166",
+                    "#c084fc"
+                ];
+
+
+                particle.style.color =
+                    colors[
+                        Math.floor(
+                            Math.random() * colors.length
+                        )
+                    ];
+
+
+                document.body.appendChild(
+                    particle
+                );
+
+
+                setTimeout(function () {
+
+                    particle.remove();
+
+                }, 1400);
+
+            }
+
+        }
+
     </script>
 
 </body>
